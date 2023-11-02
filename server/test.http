@@ -1,0 +1,48 @@
+## Execute Log In
+POST http://localhost:3000/api/login HTTP/1.1
+content-type: application/json
+
+{
+    "username": "user",
+    "password": "password"
+}
+###
+
+## Checking if user is still logged-in.
+GET http://localhost:3000/api/sessions/current HTTP/1.1
+###
+
+## Execute Log Out.
+DELETE http://localhost:3000/api/sessions/current HTTP/1.1
+###
+
+GET http://localhost:3000/api/local-flight-allseats HTTP/1.1
+
+###
+GET http://localhost:3000/api/regional-flight-allseats HTTP/1.1
+###
+
+GET http://localhost:3000/api/international-flight-allseats HTTP/1.1
+###
+
+PATCH http://localhost:3000/api/reserve-seats HTTP/1.1
+content-type: application/json
+
+{
+    "seatIds": [33,55],
+    "flightType": "local"
+}
+
+###
+PATCH http://localhost:3000/api/cancel-reservation HTTP/1.1
+content-type: application/json
+
+{
+
+    "flightType": "local"
+}
+
+###
+GET http://localhost:3000/api/check-user-reservation?flightType=local HTTP/1.1
+###
+GET http://localhost:3000/api/check-occupied-seats?flightType=local HTTP/1.1
